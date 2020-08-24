@@ -1,5 +1,5 @@
 ![Insane Forensics Logo](/images/iflogosmall.png)
-# Dispatches from Drovorub: Network Threat Hunting for Russian GRU GTsSS' Malware at Scale
+# Dispatches from Drovorub: Network Threat Hunting for Russia GRU GTsSS' Malware at Scale
 Recently, the [National Security Agency and Federal Bureau of Investigation released a report](https://media.defense.gov/2020/Aug/13/2002476465/-1/-1/0/CSA_DROVORUB_RUSSIAN_GRU_MALWARE_AUG_2020.PDF) outlining command and control capabilities leveraged by the Russian General Staff Main Intelligence Directorate (GRU) 85th Main Special Service Center (GTsSS), military unit 26265 to interfere with the 2016 U.S. Presidential election. While this report contained technical details outlining the malware technologies, the report did not provide a network-scale tool ready for network-based threat hunting. Today, [Insane Forensics](https://insaneforensics.com/) makes public a tool to assist with scaled network detection and response for GRUs Drovorub malware using Elasticsearch and Kibana. The provided tool works on existing network captures (pcap files) and also supports live capture mode.
 
 ![Drovorub Kibana Dashboard Photo](/images/dashboard_screenshot.png)
@@ -28,7 +28,7 @@ _Disclaimer: We built this tool entirely with the NSA/FBI report data. We did no
 4. Load data to analyze using one of the following options. The elk_un and elk_pw fields should only be used if your elk node uses authentication.
    1. **Packet Capture Mode:** `python3 drovorubhunt.py <elk ip> drovorub_test -elk_un <username> -elk_pw <password> -pcap <pcap file>` 
    2. **Live Capture Mode:** `python3 drovorubhunt.py <elk ip> drovorub_test -elk_un <username> -elk_pw <password> -live <interface>` 
-   3. **Test Data Mode:** `python3 drovorubhunt.py <elk ip> drovorub_test -elk_un <username> -elk_pw <password> -test`. If you use test data, make sure to set the time window back to 2016 as the sample data is from that timestamp.
+   3. **Test Data Mode:** `python3 drovorubhunt.py <elk ip> drovorub_test -elk_un <username> -elk_pw <password> -test`. If you use test data, make sure to set the time window back to 2016 as the sample data is from that timestamp. The test data payload comes from the NSA/FBI report screenshots.
 
 ## Data Analysis Techniques
 The provided dashboard allows for primary hunting and response techniques covering Drovorub's command and control (c2). Drovorub C2 uses the WebSockets protocol outlined in RFC 6455. All WebSocket communications will appear in the source, destination, and network protocol panels of the provided dashboard. We came to this design decision in wanting to allow a wider aperture on potential unknown or undecoded WebSocket communications beyond known communication formats outlined in the report. 
