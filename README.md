@@ -31,9 +31,7 @@ _Disclaimer: We built this tool entirely with the NSA/FBI report data. We did no
    3. **Test Data Mode:** `python3 drovorubhunt.py <elk ip> drovorub_test -elk_un <username> -elk_pw <password> -test`. If you use test data, make sure to set the time window back to 2016 as the sample data is from that timestamp. The test data payload comes from the NSA/FBI report screenshots.
 
 ## Data Analysis Techniques
-The provided dashboard allows for primary hunting and response techniques covering Drovorub's command and control (c2). Drovorub C2 uses the WebSockets protocol outlined in RFC 6455. All WebSocket communications will appear in the source, destination, and network protocol panels of the provided dashboard. We came to this design decision in wanting to allow a wider aperture on potential unknown or undecoded WebSocket communications beyond known communication formats outlined in the report. 
-
-## Want to Contribute
+The provided dashboard allows for primary hunting and response techniques covering Drovorub's command and control (c2). Drovorub C2 uses the WebSockets protocol outlined in RFC 6455. All WebSocket communications will appear in the source, destination, and network protocol panels of the provided dashboard. We came to this design decision in wanting to allow a wider aperture on potential unknown or undecoded WebSocket communications beyond known communication formats outlined in the report.
 
 ![Drovorub 5 Tuple Panel](/images/drovorub_5tuple_pane.png)
 
